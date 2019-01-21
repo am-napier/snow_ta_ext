@@ -1,0 +1,155 @@
+<form class="form-horizontal form-complex">
+    <style>
+        .alert-save-as .trigger-actions .alert-actions-control-group .more-info .control-label, .alert-edit .trigger-actions .alert-actions-control-group .more-info .control-label{
+            width: 80px;
+            padding-right: 10px;
+        }
+        .help-block{
+            width: 140px;
+            padding-right: 10px;
+            padding-bottom: 5px;
+        }
+    </style>
+    <div>Setup the properties for the event here.</div>
+    <div><a href="https://docs.servicenow.com/bundle/london-it-operations-management/page/product/event-management/task/send-events-via-web-service.html">Service Now Docs ...</a>
+    <!-- Node is required (empty string accepted but perhaps it shouldn't be) -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_node">Node<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.node" id="snow_event_node" placeholder="e.g. $result.entity_title$"/>
+            <span class="help-block">The physical or virtual device on which the event occurred</span>
+        </div>
+    </div>
+    <!-- Type is required (empty string accepted but perhaps it shouldn't be) -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_type">Type<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.type" id="snow_event_type" placeholder="e.g. Alert"/>
+            <span class="help-block">Event type, as defined in ServiceNow Event Management</span>
+        </div>
+    </div>
+    <!-- Resource is required (empty string accepted but perhaps it shouldn't be) -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_resource">Resource<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.resource" id="snow_event_resource" placeholder="e.g. $result.resource"/>
+            <span class="help-block">The component on the node to which the event applies</span>
+        </div>
+    </div>
+    <!-- Severity is required (empty string accepted but perhaps it shouldn't be) -->
+    <div class="control-group">
+        <label class="control-label" for="snow_severity">Severity<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.severity" id="snow_severity" placeholder="e.g. $result.snow_severity"/>
+            <span class="help-block">Integer: 1=Crit, 5=Info, 0=Clear</span>
+        </div>
+    </div>
+    <!-- Configuration ID from service now -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_ci_id">CI ID</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.ci_id" id="snow_event_ci_id" placeholder="$result.snow_ci_uuid$"/>
+            <span class="help-block">CMDB ID of the CI</span>
+        </div>
+    </div>
+    <!-- Ticket number for service now -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_correlation_id">CI ID</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.correlation_id" id="snow_event_correlation_id" placeholder="$result.event_id$ ???"/>
+            <span class="help-block">Provide an id for the event to Snow</span>
+        </div>
+    </div>
+    <!-- drilldown url if you want to send one or the search results will be linked to -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_drilldown">Drilldown Link</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.drilldown" id="snow_event_drilldown" />
+            <span class="help-block">URL for this alert</span>
+        </div>
+    </div>
+    <!-- This is the event description -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_description">Description</label>
+        <div class="controls">
+            <textarea type="text" name="action.snow_event_ext.param.description" style="height:120px;" id="snow_event_description" ></textarea>
+            <span class="help-block">Description of the event</span>
+        </div>
+    </div>
+    <!-- source -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_source">Source</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.source" id="snow_event_source" />
+            <span class="help-block">Defaults to Splunk-{hostname}</span>
+        </div>
+    </div>
+    <!-- event_class -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_class">Event Class</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.event_class" id="snow_event_class" />
+            <span class="help-block">Default is Splunk</span>
+        </div>
+    </div>
+    <!-- message_key-->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_message_key">Message Key</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.message_key" id="snow_event_message_key" />
+            <span class="help-block">Used for de-duplication.</span>
+        </div>
+    </div>
+    <!-- metric_name-->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_metric_name">Metric Name</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.metric_name" id="snow_event_metric_name" />
+            <span class="help-block">Name of the metric that triggered the alert.</span>
+        </div>
+    </div>
+    <!-- resolution_state-->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_resolution_state">Resolution State</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.resolution_state" id="snow_event_resolution_state" value="New"></input>
+            <span class="help-block">Valid values are New and Closing</span>
+        </div>
+    </div>
+    <!-- time_of_event -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_time_of_event">Time of Event</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.time_of_event" id="snow_event_time_of_event" />
+            <span class="help-block">Time when the event occurred. yyyy-MM-dd HH:mm:ss GMT</span>
+        </div>
+    </div>
+    <!-- Experimental, not sure how we can use this yet but here you can dump anything that isn't a field in the table and let Snow sort it out -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_services">Services</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.extra.services" id="snow_event_services" />
+            <span class="help-block">Service details, added to additional info</span>
+        </div>
+    </div>
+    <!-- Same as services above -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_entities">Entities</label>
+        <div class="controls">
+            <input type="text" name="action.snow_event_ext.param.extra.entities" id="snow_event_entities" />
+            <span class="help-block">Entity details, added to additional info</span>
+        </div>
+    </div>
+    <!-- Additional Info - Extra stuff you want to throw at Snow -->
+    <div class="control-group">
+        <label class="control-label" for="snow_event_additional">Additional Info</label>
+        <div class="controls">
+            <textarea placeholder="\"ci2metric\":\"$result.ciid$\",\"some_other_var\":\"$result.some_other_stuff\"" type="text" name="action.snow_event_ext.param.additional" style="height:120px;" id="snow_event_additional" ></textarea>
+            <span class="help-block">Formatted JSON object to be inserted into additional_info</span>
+        </div>
+    </div>
+</form>
